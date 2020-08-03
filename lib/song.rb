@@ -45,20 +45,18 @@ class Song
     self.all.sort_by{ |song| song.name}.uniq
   end
 
-  # def self.new_from_filename(filename)
-  #   artist_name = filename.split(" - ").first
-  #   song_name = filename.split(" - ")[1].gsub(".mp3", "")
-  #   song = self.new
-  #   song.name = song_name
-  #   binding.pry
-  #   song.artist_name = artist_name
-  # end
+  def self.new_from_filename(filename)
+    artist_name = filename.split(" - ").first
+    song_name = filename.split(" - ")[1].gsub(".mp3", "")
+    song = self.create_by_name(song_name)
+    song.artist_name = artist_name
+  end
 
   def self.create_from_filename(filename)
     artist_name = filename.split(" - ").first
     song_name = filename.split(" - ")[1].gsub(".mp3", "")
     song = self.create_by_name(song_name)
-    song.artst_name = artist_name
+    song.artist_name = artist_name
     song.save
   end
 
